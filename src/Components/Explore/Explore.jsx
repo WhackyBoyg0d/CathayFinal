@@ -138,7 +138,7 @@ class MapContainer extends Component {
   getPlaceContent = (placeName) => {
     const placeData = {
       Hotel: {
-        name: "Hotel",
+        name: "JW Marriot Bonvoy",
         location: "22.302711, 114.177216",
         images: [
           "https://lh5.googleusercontent.com/p/AF1QipMqyUjs12Svb9JDiHcGGypQgkmcKMC2lTbz1Xhq=w253-h189-k-no",
@@ -149,7 +149,7 @@ class MapContainer extends Component {
           "Detailed information about hotel amenities and nearby attractions.",
       },
       Retail: {
-        name: "Retail",
+        name: "Cathay Pacific Shop",
         location: "22.280847, 114.158917",
         images: [
           "https://www.cathaypacific.com/content/dam/focal-point/cx/shopping/hk/Cathay_Shop_Cityplaza_new_2400x1600.renditionimage.900.600.jpg",
@@ -160,7 +160,7 @@ class MapContainer extends Component {
           "Discover the best retail stores, discounts, and popular brands here.",
       },
       Lifestyle: {
-        name: "Lifestyle",
+        name: "Avis Car Rental",
         location: "22.319303, 114.169361",
         images: [
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjcnk8p64BWGR3_M6Yb6Zf8iXjx3zwMMGJjg&s",
@@ -171,7 +171,7 @@ class MapContainer extends Component {
           "Get insights on lifestyle services, spa treatments, and wellness programs.",
       },
       Dining: {
-        name: "Dining",
+        name: "Alto Bar and Grill",
         location: "22.28552, lng: 114.15769",
         images: [
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb2oo1aM-8ZITu5h5eaj5Ssz17l2-PN06mJA&s",
@@ -202,7 +202,15 @@ class MapContainer extends Component {
     } = this.state;
 
     return (
-      <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+      <div
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: "100vh",
+          margin: 0,
+          padding: 0,
+        }}
+      >
         {/* Main Map Content */}
         <div style={{ width: "100%", height: "calc(100vh - 50px)" }}>
           {!isPanelExpanded && (
