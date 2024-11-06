@@ -1,49 +1,76 @@
-import Navbar from "./Navbar";
+import Navbar from './Navbar'
+import taipei from '../assets/taipei.png'
+import kaohsiung from '../assets/kaohsiung.png'
 
-
-const HomePage = () => {
-    
+export default function HomePage() {
   return (
-    <div className="bg-gray-100 min-h-screen">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center py-20 bg-blue-500 text-white">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Our App</h1>
-        <p className="text-lg mb-6">Your journey to better connections starts here.</p>
-        <button className="bg-white text-blue-500 px-6 py-2 rounded-lg font-semibold hover:bg-blue-100">
-          Get Started
-        </button>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20">
-        <h2 className="text-3xl font-bold text-center mb-10">Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-xl font-semibold mb-2">Easy Setup</h3>
-            <p className="text-gray-600">Get started quickly with our intuitive onboarding process.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-xl font-semibold mb-2">Personalized Matches</h3>
-            <p className="text-gray-600">Find connections based on shared interests and location.</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-xl font-semibold mb-2">Real-time Updates</h3>
-            <p className="text-gray-600">Stay connected with real-time notifications and messages.</p>
+    <div className="min-h-screen  p-4">
+      {/* Header */}
+      <header className="bg-primary shadow p-4 rounded-lg mb-8">
+        <div className="flex justify-between items-center mb-4">
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-white">Hello, Aditya</h2>
+          <div className="flex items-center space-x-2 mt-2">
+            <span className="text-xl text-secondary">✈️</span>
+            <span className="text-xl font-semibold text-white">3,952</span>
+            <span className="text-sm text-secondary">   Status Points</span>
+            <span className="text-xl font-semibold text-white">16</span>
           </div>
         </div>
-      </section>
+      </header>
 
-      {/* Call to Action Section */}
-      <section className="bg-blue-500 text-white py-20 text-center">
-        <h2 className="text-3xl font-bold mb-4">Ready to Start?</h2>
-        <p className="text-lg mb-6">Join our community and make meaningful connections today.</p>
-        <button className="bg-white text-blue-500 px-8 py-3 rounded-lg font-semibold hover:bg-blue-100">
-          Sign Up Now
-        </button>
-      </section>
+      {/* Main Content */}
+      <main className="space-y-6">
+        <div className="bg-primary text-center bg-cover bg-center p-6 rounded-lg shadow-lg bg-[url('https://example.com/background.jpg')]">
+          <h3 className="text-xl font-semibold text-white mb-4">
+            Where can we take you next?
+          </h3>
+          <div className="flex justify-center space-x-4">
+            <button className="bg-white text-primary font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-50">
+              ✈️ Book a trip
+            </button>
+            <button className="bg-white text-primary font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-50">
+              📄 Manage booking
+            </button>
+          </div>
+        </div>
+
+        {/* Offers Section */}
+        <section>
+          <h3 className="text-xl font-bold text-gray-800 mb-2">Our latest offers</h3>
+          <p className="text-gray-600 mb-4">From: Hong Kong</p>
+          <div className="grid grid-cols-2 gap-4">
+            {/* Offer Card 1 */}
+            <div className="bg-white p-4 rounded-lg shadow-lg">
+              <img
+                src= {taipei}
+                alt="Taipei"
+                className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h4 className="text-lg font-bold text-gray-800">Taipei</h4>
+              <p className="text-gray-500">Economy</p>
+              <p className="text-gray-800 font-semibold">from HKD1,659</p>
+              <button className="text-blue-600 font-semibold mt-2">Book now</button>
+            </div>
+
+            {/* Offer Card 2 */}
+            <div className="bg-white p-4 rounded-lg shadow-lg">
+              <img
+                src= {kaohsiung}  
+                alt="Kaohsiung"
+                className="w-full h-40 object-cover rounded-lg mb-4"
+              />
+              <h4 className="text-lg font-bold text-gray-800">Kaohsiung</h4>
+              <p className="text-gray-500">Economy</p>
+              <p className="text-gray-800 font-semibold">from HKD1,559</p>
+              <button className="text-blue-600 font-semibold mt-2">Book now</button>
+            </div>
+          </div>
+        </section>
+      </main>
       <Navbar/>
     </div>
   );
-};
+}
 
-export default HomePage;

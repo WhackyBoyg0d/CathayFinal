@@ -1,4 +1,5 @@
-import Navbar from "./Navbar"
+import React from 'react'
+import Navbar from './Navbar'
 
 const Booking = () => {
   return (
@@ -10,3 +11,4 @@ const Booking = () => {
 }
 
 export default Booking
+
