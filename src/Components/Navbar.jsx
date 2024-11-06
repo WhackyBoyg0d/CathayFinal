@@ -1,51 +1,48 @@
-import { FaHome, FaSearch, FaPlusSquare, FaBell, FaUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { FaCompass, FaUser } from 'react-icons/fa';
+import { IoMdAirplane } from "react-icons/io";
+import { PiTrophyFill } from "react-icons/pi";
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { MdManageSearch } from "react-icons/md";
+
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const clickHome = () => {
-    navigate('/');
-  }
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState('');
 
-  const clickBooking = () => {
-    navigate('/booking');
-  }
+  // Set the active tab based on the current location
+  useEffect(() => {
+    setActiveTab(location.pathname);
+  }, [location.pathname]);
 
-  const clickProfile = () => {
-    navigate('/profile');
-  }
+  const clickHandler = (path) => {
+    navigate(path);
+  };
 
-  const clickStats = () => {
-    navigate('/stats');
-  }
-
-  const clickExplore = () => {
-    navigate('/explore');
-  }
+  const tabs = [
+    { path: '/', icon: <IoMdAirplane />, label: 'Flights' },
+    { path: '/booking', icon: <MdManageSearch />, label: 'Manage Booking' },
+    { path: '/explore', icon: <FaCompass  />, label: 'Explore' },
+    { path: '/stats', icon: <PiTrophyFill />, label: 'MilesStones' },
+    { path: '/profile', icon: <FaUser />, label: 'Profile' },
+  ];
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white shadow-md md:shadow-none md:relative md:w-auto">
-      <nav className="flex justify-between md:justify-center md:space-x-10 px-4 py-3 md:py-0">
-        <button className="flex flex-col items-center focus:outline-none md:hover:text-blue-500" onClick={clickHome}>
-          <FaHome className="text-xl" />
-          <span className="text-xs mt-1 hidden md:block">Home</span>
-        </button>
-        <button className="flex flex-col items-center focus:outline-none md:hover:text-blue-500" onClick={clickBooking}>
-          <FaSearch className="text-xl" />
-          <span className="text-xs mt-1 hidden md:block">Search</span>
-        </button>
-        <button className="flex flex-col items-center focus:outline-none md:hover:text-blue-500" onClick={clickExplore}>
-          <FaPlusSquare className="text-xl" />
-          <span className="text-xs mt-1 hidden md:block">Add</span>
-        </button>
-        <button className="flex flex-col items-center focus:outline-none md:hover:text-blue-500" onClick={clickStats}>
-          <FaBell className="text-xl" />
-          <span className="text-xs mt-1 hidden md:block">Alerts</span>
-        </button>
-        <button className="flex flex-col items-center focus:outline-none md:hover:text-blue-500" onClick={clickProfile}>
-          <FaUser className="text-xl" />
-          <span className="text-xs mt-1 hidden md:block">Profile</span>
-        </button>
+    <div className="fixed bottom-0 left-0 w-full bg-white shadow-md">
+      <nav className="flex justify-around items-center px-4 py-3">
+        {tabs.map(({ path, icon, label }) => (
+          <button
+            key={path}
+            className={`flex flex-col items-center focus:outline-none hover:text-primary ${
+              activeTab === path ? 'text-primary' : ''
+            }`}
+            onClick={() => clickHandler(path)}
+          >
+            {icon}
+            <span className="text-xs mt-1">{label}</span>
+          </button>
+        ))}
       </nav>
     </div>
   );
