@@ -1,3 +1,5 @@
+import Navbar from "./Navbar";
+
 
 const HomePage = () => {
     
@@ -39,6 +41,7 @@ const HomePage = () => {
           Sign Up Now
         </button>
       </section>
+      <Navbar/>
     </div>
   );
 };
