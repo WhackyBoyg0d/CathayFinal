@@ -3,7 +3,7 @@ import Navbar from "./Navbar"
 const Profile = () => {
   return (
     <div>
-      <div className="min-h-screen bg-gray-100 p-4">
+      <div className="min-h-screen p-4">
       {/* Profile Card */}
       <div className="bg-primary p-6 rounded-lg shadow-lg mt-4">
         <div className="flex flex-col items-center">
