@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import SlidingPanel from "./SlidingPanel";
 import Navbar from "../Navbar";
-
+import markerIcon from "../../assets/marker.svg";
 const mapStyles = {
   width: "100vw",
   height: "100vh",
@@ -272,6 +272,11 @@ class MapContainer extends Component {
                 position={{ lat: 22.302711, lng: 114.177216 }}
                 onClick={this.onMarkerClick}
                 name="Hotel"
+                icon={{
+                  url: markerIcon,
+                  scaledSize: new this.props.google.maps.Size(45, 45),
+                  className: 'map-marker-icon',
+                }}
               />
             )}
             {showRetailMarker && (
@@ -279,6 +284,11 @@ class MapContainer extends Component {
                 position={{ lat: 22.280847, lng: 114.158917 }}
                 onClick={this.onMarkerClick}
                 name="Retail"
+                icon={{
+                  url: markerIcon,
+                  scaledSize: new this.props.google.maps.Size(45, 45),
+                  className: 'map-marker-icon',
+                }}
               />
             )}
             {showLifestyleMarker && (
@@ -286,6 +296,11 @@ class MapContainer extends Component {
                 position={{ lat: 22.319303, lng: 114.169361 }}
                 onClick={this.onMarkerClick}
                 name="Lifestyle"
+                icon={{
+                  url: markerIcon,
+                  scaledSize: new this.props.google.maps.Size(45, 45),
+                  className: 'map-marker-icon',
+                }}
               />
             )}
             {showDiningMarker && (
@@ -293,6 +308,11 @@ class MapContainer extends Component {
                 position={{ lat: 22.28552, lng: 114.15769 }}
                 onClick={this.onMarkerClick}
                 name="Dining"
+                icon={{
+                  url: markerIcon,
+                  scaledSize: new this.props.google.maps.Size(45, 45),
+                  className: 'map-marker-icon',
+                }}
               />
             )}
           </Map>
@@ -302,6 +322,11 @@ class MapContainer extends Component {
               placeData={selectedPlace}
               isExpanded={isPanelExpanded}
               onToggleExpand={this.handleToggleExpand}
+              icon={{
+                url: markerIcon,
+                scaledSize: new this.props.google.maps.Size(45, 45),
+                className: 'map-marker-icon',
+              }}
             />
           )}
         </div>

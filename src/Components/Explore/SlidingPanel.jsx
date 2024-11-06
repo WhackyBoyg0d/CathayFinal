@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Webcam from "react-webcam";
 import jsQR from "jsqr";
 import MilestoneSuccess from "./MilestoneSuccess";
+import zIndex from "@mui/material/styles/zIndex";
 
 const SlidingPanel = ({ placeData, onToggleExpand }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -194,34 +195,37 @@ const SlidingPanel = ({ placeData, onToggleExpand }) => {
 
       {/* QR Code Scanner Modal */}
       {showQrScanner && (
-        <div style={qrScannerOverlayStyle}>
-          <button
-            onClick={() => setShowQrScanner(false)}
-            style={closeButtonStyle}
-          >
-            ✖
-          </button>
+      <div style={qrScannerOverlayStyle}>
+        <button
+          onClick={() => {
+            setShowQrScanner(false);  // Close the QR scanner panel
+            setScanError(null);        // Clear any existing scan error
+          }}
+          style={closeButtonStyle}
+        >
+          ✖
+        </button>
 
-          {/* Camera Frame */}
-          <div style={cameraFrameStyle}></div>
+        {/* Camera Frame */}
+        <div style={cameraFrameStyle}></div>
 
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            screenshotFormat="image/png"
-            style={{ width: "100%", height: "auto", borderRadius: "15px" }}
-            videoConstraints={{
-              facingMode: "environment",
-            }}
-          />
+        <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/png"
+          style={{ width: "100%", height: "auto", borderRadius: "15px" }}
+          videoConstraints={{
+            facingMode: "environment",
+          }}
+        />
 
-          {scanError && (
-            <p style={{ color: "red", fontSize: "16px", marginTop: "10px" }}>
-              {scanError}
-            </p>
-          )}
-        </div>
-      )}
+        {scanError && (
+          <p style={{ color: "red", fontSize: "16px", marginTop: "10px" }}>
+            {scanError}
+          </p>
+        )}
+  </div>
+)}
     </div>
   );
 };
@@ -262,7 +266,7 @@ const qrScannerOverlayStyle = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  zIndex: 3,
+  zIndex: 1000,
 };
 
 const closeButtonStyle = {
@@ -274,6 +278,7 @@ const closeButtonStyle = {
   fontSize: "24px",
   color: "#ffffff",
   cursor: "pointer",
+  zIndex: 1100,
 };
 
 const cameraFrameStyle = {

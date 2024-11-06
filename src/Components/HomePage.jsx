@@ -1,6 +1,8 @@
 import Navbar from './Navbar'
 import taipei from '../assets/taipei.png'
 import kaohsiung from '../assets/kaohsiung.png'
+import { PiAirplaneTiltFill } from "react-icons/pi";
+import asiamiles  from "../assets/asiamiles.svg";
 
 export default function HomePage() {
   return (
@@ -12,9 +14,9 @@ export default function HomePage() {
         <div>
           <h2 className="text-2xl font-bold text-white">Hello, Aditya</h2>
           <div className="flex items-center space-x-2 mt-2">
-            <span className="text-xl text-white">✈️</span>
+            <span className="text-xl text-secondary"><PiAirplaneTiltFill /></span>
             <span className="text-xl font-semibold text-white">3,952</span>
-            <span className="text-sm text-white">   Status Points</span>
+            <span className="text-sm text-secondary"><img src={asiamiles} width={17} height={17}/></span>
             <span className="text-xl font-semibold text-white">16</span>
           </div>
         </div>
