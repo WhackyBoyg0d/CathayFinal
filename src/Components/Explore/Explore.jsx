@@ -1,8 +1,61 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import SlidingPanel from "./SlidingPanel";
 import Navbar from "../Navbar";
-import markerIcon from "../../assets/marker.svg";
+
+// Loading Screen Component
+const LoadingScreen = () => {
+  useEffect(() => {
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerHTML = `
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+    `;
+    document.head.appendChild(styleSheet);
+    return () => {
+      document.head.removeChild(styleSheet);
+    };
+  }, []);
+
+  return (
+    <div style={loadingScreenStyle}>
+      <div className="spinner"></div>
+      <p style={loadingTextStyle}>Loading...</p>
+    </div>
+  );
+};
+
+const loadingScreenStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100vw",
+  height: "100vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+  backgroundColor: "#ffffff",
+  zIndex: 1000,
+};
+
+const loadingTextStyle = {
+  marginTop: "10px",
+  fontSize: "18px",
+  color: "#333",
+};
+
 const mapStyles = {
   width: "100vw",
   height: "100vh",
@@ -23,6 +76,7 @@ class MapContainer extends Component {
       showRetailMarker: false,
       showLifestyleMarker: false,
       showDiningMarker: false,
+      loading: true,
     };
     this.autocomplete = null;
   }
@@ -150,7 +204,7 @@ class MapContainer extends Component {
       },
       Retail: {
         name: "Cathay Pacific Shop",
-        location: "22.280847, 114.158917",
+        location: "22.280847, lng: 114.158917",
         images: [
           "https://www.cathaypacific.com/content/dam/focal-point/cx/shopping/hk/Cathay_Shop_Cityplaza_new_2400x1600.renditionimage.900.600.jpg",
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaytGvxtNDd39Muavc8kTWl_-uZIAQpLONrg&s",
@@ -161,7 +215,7 @@ class MapContainer extends Component {
       },
       Lifestyle: {
         name: "Avis Car Rental",
-        location: "22.319303, 114.169361",
+        location: "22.319303, lng: 114.169361",
         images: [
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjcnk8p64BWGR3_M6Yb6Zf8iXjx3zwMMGJjg&s",
           "https://www.asiamiles.com/content/dam/am-content/brand-v2/transport-pillar/product-image/avis/Avis%20new%20logo_1500x900.png",
@@ -199,20 +253,17 @@ class MapContainer extends Component {
       showRetailMarker,
       showLifestyleMarker,
       showDiningMarker,
+      loading,
     } = this.state;
 
     return (
-      <div
-        style={{
-          position: "relative",
-          width: "100vw",
-          height: "100vh",
-          margin: 0,
-          padding: 0,
-        }}
-      >
+      <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+        {/* Loading Screen */}
+        {loading && <LoadingScreen />}
+
         {/* Main Map Content */}
         <div style={{ width: "100%", height: "calc(100vh - 50px)" }}>
+          {/* Search Bar and Category Buttons */}
           {!isPanelExpanded && (
             <div
               style={{
@@ -265,6 +316,7 @@ class MapContainer extends Component {
             zoom={14}
             style={mapStyles}
             initialCenter={searchLocation || currentLocation}
+            onReady={() => this.setState({ loading: false })}
             onClick={() => this.setState({ showingInfoWindow: false })}
           >
             {showHotelMarker && (
@@ -275,7 +327,7 @@ class MapContainer extends Component {
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: 'map-marker-icon',
+                  className: "map-marker-icon",
                 }}
               />
             )}
@@ -287,7 +339,7 @@ class MapContainer extends Component {
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: 'map-marker-icon',
+                  className: "map-marker-icon",
                 }}
               />
             )}
@@ -299,7 +351,7 @@ class MapContainer extends Component {
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: 'map-marker-icon',
+                  className: "map-marker-icon",
                 }}
               />
             )}
@@ -311,7 +363,7 @@ class MapContainer extends Component {
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: 'map-marker-icon',
+                  className: "map-marker-icon",
                 }}
               />
             )}
@@ -325,7 +377,7 @@ class MapContainer extends Component {
               icon={{
                 url: markerIcon,
                 scaledSize: new this.props.google.maps.Size(45, 45),
-                className: 'map-marker-icon',
+                className: "map-marker-icon",
               }}
             />
           )}

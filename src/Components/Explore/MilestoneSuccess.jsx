@@ -29,8 +29,8 @@ const MilestoneSuccess = ({ onClose }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)", // Optional: Add a semi-transparent background
-        zIndex: 1000, // Ensure the container is above other elements
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        zIndex: 1000,
       }}
     >
       <Confetti
@@ -45,10 +45,10 @@ const MilestoneSuccess = ({ onClose }) => {
           justifyContent: "center",
           padding: "20px",
           textAlign: "center",
-          backgroundColor: "#ffffff", // Background color for the content
+          backgroundColor: "#ffffff",
           borderRadius: "10px",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          zIndex: 1001, // Ensure the content is above the background container
+          zIndex: 1001,
         }}
       >
         <h2 style={{ fontSize: "24px", fontWeight: "700", margin: "20px 0" }}>
@@ -61,9 +61,9 @@ const MilestoneSuccess = ({ onClose }) => {
             Recent Collected Milestones
           </h3>
           <div style={milestoneIconsContainerStyle}>
-            <div style={milestoneIconStyle}>🌸</div>
-            <div style={milestoneIconStyle}>🌺</div>
-            <div style={milestoneIconStyle}>🌻</div>
+            <div style={milestoneIconStyle}>✈️</div>
+            <div style={milestoneIconStyle}>🛫</div>
+            <div style={milestoneIconStyle}>🛬</div>
           </div>
         </div>
 

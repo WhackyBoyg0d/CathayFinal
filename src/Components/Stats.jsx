@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, BookOpen, Trophy, Target } from "lucide-react";
+import { Trophy, Target } from "lucide-react";
 import Navbar from "./Navbar";
 
 // Card Component
@@ -197,9 +197,8 @@ export default function Component() {
     <div className="min-h-screen h-screen w-full bg-gray-50 flex flex-col overflow-hidden">
       <div className="flex-grow p-6 flex flex-col space-y-6 overflow-y-auto">
         <div className="flex items-center justify-between">
-          <div className="text-3xl  text-gray-900"> Hello, User</div>
           <div>
-            <div className="text-3xl  text-gray-900">120</div>
+            <div className="text-3xl text-gray-900">120</div>
             <div className="text-sm text-gray-500">points earned</div>
           </div>
           <div className="flex items-center gap-2">
@@ -227,23 +226,34 @@ export default function Component() {
                 <span className="h-4 w-4 rounded-full bg-gray-300" />
               </div>
             </div>
+
+            {/* Display PNG images directly with responsive scaling */}
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <img
+                src="src/assets/Group 172-1.png"
+                alt="Next Goal"
+                className="w-1/2 max-w-xs mx-auto"
+              />
+              <img
+                src="src/assets/Group 172.png"
+                alt="Progress"
+                className="w-1/2 max-w-xs mx-auto"
+              />
+              <img
+                src="src/assets/Group 173.png"
+                alt="History"
+                className="w-1/2 max-w-xs mx-auto"
+              />
+              <img
+                src="src/assets/Group 175.png"
+                alt="Locked"
+                className="w-1/2 max-w-xs mx-auto opacity-50 cursor-not-allowed"
+                title="Locked"
+              />
+            </div>
           </div>
         ) : (
           <CathayShop />
-        )}
-
-        {/* Only display ActionCards for Asia Milestone */}
-        {activeTab === "Asia Milestone" && (
-          <div className="grid grid-cols-2 gap-4 mt-6">
-            {[
-              { icon: ArrowRight, label: "Next Goal" },
-              { icon: ArrowRight, label: "Progress" },
-              { icon: ArrowRight, label: "History" },
-              { icon: BookOpen, label: "Learn More" },
-            ].map((item, idx) => (
-              <ActionCard key={idx} Icon={item.icon} label={item.label} />
-            ))}
-          </div>
         )}
       </div>
 
@@ -259,17 +269,5 @@ export default function Component() {
         }}
       />
     </div>
-  );
-}
-
-// ActionCard Component
-function ActionCard({ Icon, label }) {
-  return (
-    <Card className="p-4 flex flex-col items-center justify-center space-y-2 hover:bg-gray-100 transition-colors cursor-pointer">
-      <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-        <Icon className="h-5 w-5 text-white" />
-      </div>
-      <span className="text-sm font-medium text-gray-800">{label}</span>
-    </Card>
   );
 }
