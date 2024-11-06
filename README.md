@@ -23,7 +23,6 @@ This project is a [React](https://reactjs.org/) application created with [Vite](
 
 - Fast, modern development with Vite
 - Optimized build output
-- [Add more high-level features here]
 
 ---
 
