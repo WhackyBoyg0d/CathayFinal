@@ -2,6 +2,7 @@ import React, { Component, useEffect } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import SlidingPanel from "./SlidingPanel";
 import Navbar from "../Navbar";
+import markerIcon from "../../assets/marker.svg";
 
 // Loading Screen Component
 const LoadingScreen = () => {
