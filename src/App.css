@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #root {
-  max-width: 1350px;
+  max-width: 100%;
   margin: 0 auto; /* This will center the content horizontally */
   padding: 0;
   text-align: center;

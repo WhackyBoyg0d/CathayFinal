@@ -4,11 +4,7 @@ import ManageBooking from "./Components/ManageBooking";
 import Explore from "./Components/Explore/Explore";
 import Profile from "./Components/Profile";
 import Stats from "./Components/Stats";
-import Axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-
-
 
 import "./App.css";
 

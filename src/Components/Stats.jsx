@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Trophy, Target } from "lucide-react";
 import Navbar from "./Navbar";
+import hkg from "../assets/hkg.png";
+import b777 from "../assets/b777.png";
+import a321 from "../assets/a321.png";
+import hidden from "../assets/hidden.png";
+
 
 // Card Component
 function Card({ children, className }) {
@@ -230,23 +235,19 @@ export default function Component() {
             {/* Display PNG images directly with responsive scaling */}
             <div className="grid grid-cols-2 gap-4 mt-6">
               <img
-                src="src/assets/Group 172-1.png"
-                alt="Next Goal"
+                src={b777}
                 className="w-1/2 max-w-xs mx-auto"
               />
               <img
-                src="src/assets/Group 172.png"
-                alt="Progress"
+                src={a321}
                 className="w-1/2 max-w-xs mx-auto"
               />
               <img
-                src="src/assets/Group 173.png"
-                alt="History"
+                src={hkg}
                 className="w-1/2 max-w-xs mx-auto"
               />
               <img
-                src="src/assets/Group 175.png"
-                alt="Locked"
+                src={hidden}
                 className="w-1/2 max-w-xs mx-auto opacity-50 cursor-not-allowed"
                 title="Locked"
               />
