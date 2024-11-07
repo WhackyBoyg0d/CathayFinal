@@ -180,13 +180,14 @@ class MapContainer extends Component {
     });
   };
 
-  onMarkerClick = (props, marker) => {
+  onMarkerClick = (props, marker, coordinates) => {
     const contentData = this.getPlaceContent(props.name);
     this.setState({
       selectedPlace: contentData,
       activeMarker: marker,
       showingInfoWindow: true,
       isPanelExpanded: false,
+      searchLocation: coordinates, // Update map center to clicked marker
     });
   };
 
@@ -205,7 +206,7 @@ class MapContainer extends Component {
       },
       Retail: {
         name: "Cathay Pacific Shop",
-        location: "22.280847, lng: 114.158917",
+        location: "22.280847, 114.158917",
         images: [
           "https://www.cathaypacific.com/content/dam/focal-point/cx/shopping/hk/Cathay_Shop_Cityplaza_new_2400x1600.renditionimage.900.600.jpg",
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaytGvxtNDd39Muavc8kTWl_-uZIAQpLONrg&s",
@@ -316,55 +317,71 @@ class MapContainer extends Component {
             google={this.props.google}
             zoom={14}
             style={mapStyles}
-            initialCenter={searchLocation || currentLocation}
+            center={searchLocation || currentLocation} // Center map based on search location or current location
             onReady={() => this.setState({ loading: false })}
             onClick={() => this.setState({ showingInfoWindow: false })}
           >
             {showHotelMarker && (
               <Marker
                 position={{ lat: 22.302711, lng: 114.177216 }}
-                onClick={this.onMarkerClick}
+                onClick={(props, marker) =>
+                  this.onMarkerClick(props, marker, {
+                    lat: 22.302711,
+                    lng: 114.177216,
+                  })
+                }
                 name="Hotel"
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: "map-marker-icon",
                 }}
               />
             )}
             {showRetailMarker && (
               <Marker
                 position={{ lat: 22.280847, lng: 114.158917 }}
-                onClick={this.onMarkerClick}
+                onClick={(props, marker) =>
+                  this.onMarkerClick(props, marker, {
+                    lat: 22.280847,
+                    lng: 114.158917,
+                  })
+                }
                 name="Retail"
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: "map-marker-icon",
                 }}
               />
             )}
             {showLifestyleMarker && (
               <Marker
                 position={{ lat: 22.319303, lng: 114.169361 }}
-                onClick={this.onMarkerClick}
+                onClick={(props, marker) =>
+                  this.onMarkerClick(props, marker, {
+                    lat: 22.319303,
+                    lng: 114.169361,
+                  })
+                }
                 name="Lifestyle"
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: "map-marker-icon",
                 }}
               />
             )}
             {showDiningMarker && (
               <Marker
                 position={{ lat: 22.28552, lng: 114.15769 }}
-                onClick={this.onMarkerClick}
+                onClick={(props, marker) =>
+                  this.onMarkerClick(props, marker, {
+                    lat: 22.28552,
+                    lng: 114.15769,
+                  })
+                }
                 name="Dining"
                 icon={{
                   url: markerIcon,
                   scaledSize: new this.props.google.maps.Size(45, 45),
-                  className: "map-marker-icon",
                 }}
               />
             )}
@@ -375,11 +392,6 @@ class MapContainer extends Component {
               placeData={selectedPlace}
               isExpanded={isPanelExpanded}
               onToggleExpand={this.handleToggleExpand}
-              icon={{
-                url: markerIcon,
-                scaledSize: new this.props.google.maps.Size(45, 45),
-                className: "map-marker-icon",
-              }}
             />
           )}
         </div>
