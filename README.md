@@ -1,6 +1,6 @@
 # CathayGO
 
-A brief description of the project, explaining what it does and why it exists.
+Your all-in-one travel partner from flight bookings to experiences.
 
 ---
 
